@@ -7,6 +7,7 @@ import './index.css';
 import Counter from './counter/counter';
 import Event from './events/Event';
 import Form from "./form/form";
+import { MyFirstComponent } from './revision/revisionfile';
 // import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
@@ -21,7 +22,8 @@ root.render(
       veuillez saisir voutr prenom
     </FormField>
     <FormField inputName="lastName" inputLabel="last name" /> */}
-    <FruitList />
+    {/* <FruitList /> */}
+    <MyFirstComponent />
     {/* <Counter initialValue={31} step={3} /> */}
     {/* <Form /> */}
     {/* <Event /> */}
