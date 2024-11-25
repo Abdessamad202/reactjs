@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import HelloWorld from './helloworld/HelloWorld'
 // import FormField  from "./form/textField";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import FruitList from './fruits/fruitslist';
 import './index.css';
 import Counter from './counter/counter';
@@ -21,9 +22,9 @@ root.render(
       veuillez saisir voutr prenom
     </FormField>
     <FormField inputName="lastName" inputLabel="last name" /> */}
-    <FruitList />
+    {/* < /> */}
     {/* <Counter initialValue={31} step={3} /> */}
-    {/* <Form /> */}
+    <Form />
     {/* <Event /> */}
   </React.StrictMode>
 );
