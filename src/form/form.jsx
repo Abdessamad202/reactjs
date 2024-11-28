@@ -1,22 +1,53 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 export default function Form() {
   const [formValues, setFormValues] = useState({"name":"","age":null,"city":"","country":"MA","acceptConditions":false});
-  const handleChange = (e) => {
-    const id = e.target.id
-    let value = e.target.value
-    switch (e.target.type) {
-      case "number":
-        value = parseInt(e.target.value)
-        break;
-      case "checkbox":
-        value = e.target.checked
-        break;
-      default:
-        console.error("invalid type");
-        break;
+  const inputNameRef = useRef()
+  const inputAgeRef = useRef()
+  const inputCityRef = useRef()
+  const inputCountryRef = useRef()
+  const acceptConditionsRef = useRef()
+  const handelClick = () => {
+    let values = {
+      "name" : inputNameRef.current.value,
+      "age" : inputAgeRef.current.value,
+      "city" : inputCityRef.current.value,
+      "country" : inputCountryRef.current.value,
+      "acceptConditions" : acceptConditionsRef.current.checked
     }
-    setFormValues(prevState=> ({...prevState,[id]:value}));
+    setFormValues(values)
+    console.log(values, formValues);
+
+
+
+
+    function HelloToMyProfile() {
+      console.log("my name is abdessamad kechchaf im a software developper");
+    }
+    HelloToMyProfile()
+
+
+
+
+
+
+    
   }
+  // const handleChange = (e) => {
+  //   const id = e.target.id
+  //   let value = e.target.value
+  //   switch (e.target.type) {
+  //     case "number":
+  //       value = parseInt(e.target.value)
+  //       break;
+  //     case "checkbox":
+  //       value = e.target.checked
+  //       break;
+  //     default:
+  //       console.error("invalid type");
+  //       break;
+  //   }
+  //   setFormValues(prevState=> ({...prevState,[id]:value}));
+  // }
   return (
     <div className={"container my-4"}>
       <form>
@@ -24,7 +55,7 @@ export default function Form() {
           <label>Name</label>
           <input
             type="text"
-            onChange={handleChange}
+            ref={inputNameRef}
             id="name"
             className="form-control"
           />
@@ -33,15 +64,15 @@ export default function Form() {
           <label>City</label>
           <input
             type="text"
-            onChange={handleChange}
+            ref={inputCityRef}
             id="city"
             className="form-control"
           />
         </div>
-          <div class="form-group">
-            <label for="">country</label>
-            <select class="custom-select" onChange={handleChange} className="form-control" id="country">
-              <option selected value="MA">Morocco</option>
+          <div className="form-group">
+            <label>country</label>
+            <select  ref={inputCountryRef} className="form-control" id="country">
+              <option value="MA">Morocco</option>
               <option value="DZ">Algery</option>
               <option  value="TN">Tunisia</option>
             </select>
@@ -51,7 +82,7 @@ export default function Form() {
           <input
             type="number"
             id="age"
-            onChange={handleChange}
+            ref={inputAgeRef}
             className="form-control"
           />
         </div>
@@ -59,30 +90,20 @@ export default function Form() {
         <div className="form-check">
           <input
             type="checkbox"
-            onChange={handleChange}
+            ref={acceptConditionsRef}
             id="acceptConditions"
             className="form-check-input"
           />
-          <label htmlFor="accept" className="form-check-label">
+          <label className="form-check-label">
             Accept our rules
           </label>
         </div>
 
-        <button type="button" className="btn btn-primary">
+        <button type="button" className="btn btn-primary" onClick={handelClick}>
           Submit
         </button>
       </form>
-
-      <div className="mt-3">
-        <p>
-          <strong>Output:</strong>
-        </p>
-        {JSON.stringify(formValues)}
-        <p>Name: {formValues.name}</p>
-        <p>City: {formValues.city}</p>
-        <p>Age: {formValues.age}</p>
-        <p>Accepted Conditions: {formValues.acceptConditions ? "True" : "False"}</p>
-      </div>
+      <div>{JSON.stringify(formValues)}</div>
     </div>
   );
 }
