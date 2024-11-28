@@ -6,10 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import reportWebVitals from './reportWebVitals';
 import Task from './tp4/task';
+import Form from './form/formWithUseStateOnly';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-    <Task />
+    <Form />
   // </React.StrictMode>
 )
 
